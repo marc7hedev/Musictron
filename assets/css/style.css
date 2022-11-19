@@ -1,0 +1,113 @@
+body{
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #1b3241;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    max-width: 1500px;
+    height: 90vh;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1.5fr;
+    grid-template-rows: repeat(5, 1fr) 90px;
+}
+
+.left{
+    background: #111727;
+    grid-row: 1/6;
+    border-top-left-radius: 10px;
+}
+.left_dots{
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+}
+.dot{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+}
+.left_menu{
+    margin-top: 10px;
+    padding: 0 20px;
+}
+.menu_item{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.menu_item_text{
+    font-weight: 600;
+    font-size: 14px;
+}
+.active{
+    color: #058594;
+}
+.left_songs_list{
+    max-height: 430px;
+    overflow-y: auto; /*Darle propiedad de deslizar vista a un segmento*/
+    padding: 10px 10px 10px 0;
+}
+/*Desaparecer barra de desplazamiento*/
+.left_songs_list::-webkit-scrollbar{
+    width: 0;
+}
+.song{
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 14px;
+    gap: 10px;
+    cursor: pointer;
+    padding: 5px;
+    margin-left: -0.3rem;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: .3s;
+}
+.song:hover{
+    background: #171f36;
+}
+.play_hover{
+    display: none;
+    width: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .3s;
+}
+.song:hover .play_hover{
+    display: block;
+}
+.song_img{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+.song_name{
+    font-weight: 600;
+}
+.song_artist{
+    color: #353c4a;
+}
+.song_num{
+    color: #353c4a;
+    width: 20px;
+}
+.equalizer_gif{
+    width: 20px;
+    display: none;
+}
