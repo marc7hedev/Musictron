@@ -225,4 +225,66 @@ $(document).ready(function(){
             '</div> </div> </div>';
         $(".left_songs_list").append(template);
     });
+    artists.map(function (artist) {
+        let template = 
+        '<div class="pop"><img src="'+
+        artist.picture +
+        '" class="artist_img"><div class="pop_text">"' +
+        artists.name + 
+        '"</div></div>"';
+        $("#artists_list").append(template);
+    });
+});
+
+
+/* --//--//--//--// SEARCH_INPUT //--//--//--//-- */
+$(document).on("keyup", "#search_input", function () {
+    let searchTerm = $(this).val();
+    console.log(searchTerm);
+    if(searchTerm === ""){
+        songs.map((song, i) => {
+            let template = 
+                '<div class="song" data-id="'+
+                i +
+                '"> <img src="assets/images/equalizer.gif" class="equalizer_gif" alt="" /> <div class="song_num">'+
+                numberformatter(i + 1)+
+                '</div> <div style="position: relative;"> <img src="'+
+                song.cover+
+                '" class="song_img" alt="" /> <img src="assets/images/play.png" alt="" class="play_hover" /> </div> <div class="song_info"> <div class="song_name">'+
+                song.name+
+                '</div> <div class="song_artist">'+
+                song.artist+
+                '</div> </div> </div>';
+            $(".left_songs_list").append(template);
+        });
+    }else{
+        let results = songs.map(function (song){
+            let { name, artist } = song;
+            if(
+                name.toLowerCase().includes(searchTerm) == true ||
+                artist.toLowerCase().includes(searchTerm) == true
+            ){
+                return song;
+            }
+        }).filter(Boolean);
+
+        if(results.length > 0){
+            results.map((song, i) => {
+                $(".left_songs_list").html("");
+                let template = 
+                    '<div class="song" data-id="'+
+                    i +
+                    '"> <img src="assets/images/equalizer.gif" class="equalizer_gif" alt="" /> <div class="song_num">'+
+                    numberformatter(i + 1)+
+                    '</div> <div style="position: relative;"> <img src="'+
+                    song.cover+
+                    '" class="song_img" alt="" /> <img src="assets/images/play.png" alt="" class="play_hover" /> </div> <div class="song_info"> <div class="song_name">'+
+                    song.name+
+                    '</div> <div class="song_artist">'+
+                    song.artist+
+                    '</div> </div> </div>';
+                $(".left_songs_list").append(template);
+            });
+        }
+    }
 });
