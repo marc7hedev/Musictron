@@ -229,11 +229,29 @@ $(document).ready(function(){
         let template = 
         '<div class="pop"><img src="'+
         artist.picture +
-        '" class="artist_img"><div class="pop_text">"' +
-        artists.name + 
-        '"</div></div>"';
+        '" class="artist_img"><div class="pop_text">' +
+        artist.name + 
+        '</div></div>';
         $("#artists_list").append(template);
     });
+    albums.map(function (album) {
+        let template = 
+        '<div class="pop"><img src="'+
+        album.picture +
+        '" class="album_cover"><div class="pop_text">' +
+        album.name + 
+        '</div></div>';
+        $("#albums_list").append(template);
+    });
+    $(".right").css("background-image","linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),url(" +songs[0].cover + ")"
+    );
+    $(".right_song_img").attr("src", songs[0].cover);
+    $(".right_song_name").text(songs[0].name);
+    $(".right_song_artist").text(songs[0].artist);
+    $(".bottom .song_img").attr("src", songs[0].cover);
+    $(".bottom .song_name").text(songs[0].name);
+    $(".bottom .song_artist").text(songs[0].artist);
+    
 });
 
 
